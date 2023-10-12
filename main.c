@@ -1,23 +1,43 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void func1(void)
+int sumTwo(int a, int b) //반환형 함수 (매개변수) 선언 
 {
-     int x;
-     printf("func1 x is at %p\n", &x);
+    int c = a + b;
+    return c;
+} 
+
+int square(int n) 
+{
+    return n*n;
 }
 
-int main(void) {
-    int x; //main함수 안의 x 
-    printf("main x is at %p\n", &x); //큰 따옴표 안을 출력. 
-                                     //%p : 16진수 형태로 출력. 
-                                     //&x: 메모리의 주소. x가 메모리 안에서 어디에 위치해있는지를 설명해준다.  
-    func1();
-  
+int get_max(int x, int y) //둘중에 큰 거 출력 
+{
+    if (x > y)
+       return x;
+    else  //else 생략 가능. x가 크면 x가 출력될 테니. 
+       return y;
+}
+
+int main(int argc, char*argv[])
+{
+    int a, b;
+    int n;
+    int x, y;
+    
+    a = 15;
+    b = 4; 
+    printf("sumTwo result : %i\n", sumTwo(a, b));
+    
+    n = 4;
+    printf("square result : %i\n", square(n));
+    
+    x = 13;
+    y = 48;
+    printf("get_max result : %i\n", get_max(x, y));
+     
   system("PAUSE");	
   return 0;
 }
 
-// 결과는 다 다르게 나온다. 대신 숫자 두개가 같아야 한다. 
-//한메모리 공간 안에 x라는 변수가 다른 메모리 주소를 잡아먹고 있으면 다르게 나온다.  
-//숫자가 더 크면 stack(다음으로 부르는 함수 위치)-main(제일 먼저 부르는 함수 위치). 아래로 내려갈 수록 번지수 높아진다. 
